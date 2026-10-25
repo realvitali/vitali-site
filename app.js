@@ -1,12 +1,8 @@
 /* vitali-site — interactions: rotator, sheets, feedback pipeline */
 "use strict";
 
-/* ── CONFIG ─────────────────────────────────────────────────────
-   Point FEEDBACK_ENDPOINT at any JSON POST endpoint (Supabase edge
-   function, Vercel function, formspree-style hook…).
-   Expected payload: { project, type, message, contact, ts, ua }
-   Leave "" for device-local storage (demo mode). */
-const FEEDBACK_ENDPOINT = "";
+/* Feedback goes to the vitali-feedback Cloudflare Worker (stored in KV; read at /list). */
+const FEEDBACK_ENDPOINT = "https://vitali-feedback.mrvitali.workers.dev";
 
 const ROTATING = ["software that thinks", "tools that stay local", "machines that serve you", "things that don't phone home", "AI that belongs to someone"];
 const ROTATE_MS = 2600;
